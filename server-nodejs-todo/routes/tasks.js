@@ -40,6 +40,7 @@ router.get('/:id', function(req, res, next) {
 
 // POST create task
 router.post('/', function(req, res, next) {
+  console.log('updating-', req.body);
   connection.query('insert into task (name) values(\''+req.body.name+'\')', function(err, results) {
     if (err) res.json(err);
     else

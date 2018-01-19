@@ -9,18 +9,31 @@ class Tasksdetail extends React.Component {
   }
 
   onChange = (event) => {
-    // this.setState({name: event.target.value});
+    var newTask = this.state.task;
+    newTask.name = event.target.value;
+    this.setState({task: newTask});
     
   }
 
-  
+  componentWillReceiveProps(nextProps) {
+    if (this.props.task !== nextProps.task) {
+      this.setState({task: nextProps.task});
+    }
+  }
+  update(){
+    this.props.updateTasks(this.state.task);
+  }
   
   render() {
     return (
       <div>
-        Taskdetail:
+        
+        <h2>Taskdetail:</h2>
+        
+        id: {this.state.task.task_id} <br/>
 
-        name: <input type="text" value={this.props.task} onChange={this.onChange} />
+        name: <input type="text" value={this.state.task.name} onChange={this.onChange} />
+        <button onClick={this.update.bind(this)}>Update</button>
       </div>
     )};
 };
