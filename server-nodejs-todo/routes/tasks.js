@@ -5,7 +5,7 @@ var mysql = require('mysql');
 var connection = mysql.createConnection({
   host: 'localhost',
   user: 'root',
-  password: 'root123',
+  password: '',
   database: 'nodejs_task'
 })
 
@@ -26,7 +26,6 @@ router.get('/', function(req, res, next) {
 
 // Get task
 router.get('/:id', function(req, res, next) {
-  console.log(req.params.id)
   connection.query('SELECT * FROM task where task_id=\''+req.params.id+'\'', function(err, results) {
     if (err) {
       res.json(err);
