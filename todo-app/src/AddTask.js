@@ -15,19 +15,21 @@ class AddTask extends React.Component {
     this.setState({name: event.target.value});
   }
 
-  onSubmit = (event) => { 
-    event.preventDefault()
-    this.props.addTasks(this.state.name)
-    this.state.name = ''
+  onSubmit = (event) => {
+    if (event.key === 'Enter') {
+      event.preventDefault();
+      this.props.addTasks(this.state.name)
+      this.setState({name: ''})
+      
+    }
   }
 
   render() {
     return (
       <div>
-        <form className="App" onSubmit={this.onSubmit} > {/* event submit will call fucntion onSubmit */}
+        <form className="App" onKeyPress={this.onSubmit} > {/* event submit will call fucntion onSubmit */}
           <label>Add todo: </label>
           <input value={this.state.name} onChange={this.onChange} className="form-control"/>
-          <button className="btn btn-primary">Submit</button>
         </form>
         <br/>
       </div>
