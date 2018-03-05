@@ -1,12 +1,16 @@
 import React, { Component } from 'react';
-import MyComponent from './MyComponent';
+import Contacts from './Contacts';
+
+
 
 class App extends Component {
+
+ 
   render() {
     return (
-      <div>
+      <div class="container">
         <h2>Welcome to React</h2>
-        <MyComponent name='git'></MyComponent>
+        <Contacts></Contacts>
       </div>
     );
   }
